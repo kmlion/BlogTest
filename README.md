@@ -1,4 +1,4 @@
-** Another blog made by symfony3
+Another blog made by symfony3
 =========
 
  
