@@ -2,10 +2,20 @@ blog_homepage:
     path:     /
     defaults: { _controller: BlogUserBundle:User:index}
 
-blog_user_login:
-    path:     /login
-    defaults: { _controller: BlogUserBundle:User:login}
-
 blog_user_register:
     path:     /register
     defaults: { _controller: BlogUserBundle:User:register}
+
+login:
+    path:     /login
+    defaults: { _controller: BlogUserBundle:User:login}
+
+login_check:
+    path:     /login_check
+
+logout:
+    path:   /logout
+
+blog_user_admin:
+    path:     /admin
+    defaults: { _controller: BlogUserBundle:User:admin}

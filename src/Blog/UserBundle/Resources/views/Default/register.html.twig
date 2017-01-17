@@ -1,7 +1,12 @@
 {% extends 'BlogUserBundle::base.html.twig' %}
 {% block title  %} Register{% endblock %}
 {% block body %}
-    <h1>Register your account</h1>
+    <h1>Sign Up</h1>
+     
+    <div class="well col-sm-6 col-sm-offset-3">
+        {{ form(form) }}
+     </div>
+    {{ dump(form(form)) }}
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}

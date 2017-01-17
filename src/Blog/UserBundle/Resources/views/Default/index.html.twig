@@ -1,7 +1,20 @@
 {% extends 'BlogUserBundle::base.html.twig' %}
 
 {% block body %}
-    <h1>Welcome to my blog made by symfony</h1>
+    <h1>Welcome {% if app.user.username is defined %}
+       {{ app.user.username }}
+        {% endif %}to my blog made by symfony</h1>
+    <div class="row">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto, cupiditate dicta ea earum est et fuga fugit inventore neque nostrum odio quis quos saepe voluptatem! Aliquid quia
+            saepe totam?
+        </p>
+        <p>Dicta dolore explicabo hic, inventore, laudantium nam numquam quod ratione rem reprehenderit soluta tempore tenetur? Amet asperiores dolorem eos harum incidunt labore
+            molestiae, nesciunt, nihil numquam possimus ratione, reiciendis veritatis.
+        </p>
+        <p>Accusamus aspernatur eius excepturi illo ipsam iusto sapiente velit? Accusantium aliquid error impedit ipsa nihil
+            repellat voluptatem. Accusantium aliquid harum impedit odio qui quo rem repudiandae sequi, tempore ut, vitae.
+        </p>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}
