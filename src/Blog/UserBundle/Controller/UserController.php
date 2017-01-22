@@ -8,8 +8,8 @@
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
-
-
+    
+    
     class UserController extends Controller
     {
         public function indexAction()
@@ -23,6 +23,11 @@
             $form = $this->get('form.factory')->create(UserType::class, $user);
             
             if ($form->handleRequest($request)->isSubmitted()) {
+ 
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
@@ -35,31 +40,28 @@
             ));
         }
         
-        public function loginAction(Request $request)
+        public function loginAction()
         {
-            $form = $this->get('form.factory')->create(LoginUserType::class);
             
-            
-             if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
                 return $this->redirectToRoute('blog_homepage');
             }
-     
+            
             // Le service authentication_utils permet de récupérer le nom d'utilisateur
             // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
             // (mauvais mot de passe par exemple)
             $authenticationUtils = $this->get('security.authentication_utils');
-             return $this->render('BlogUserBundle:Default:login.html.twig', array(
+            return $this->render('BlogUserBundle:Default:login.html.twig', array(
                 'last_username' => $authenticationUtils->getLastUsername(),
                 'error'         => $authenticationUtils->getLastAuthenticationError(),
-                'form' => $form->createView()
+            
             ));
         }
-    
-   
+        
         public function adminAction()
         {
-                    
-                  return new Response("Vous êtes bien dans l'espace admin !");
-         
+            
+            return new Response("Vous êtes bien dans l'espace admin !");
+            
         }
     };

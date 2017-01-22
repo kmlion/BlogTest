@@ -5,9 +5,10 @@ security:
         main:
             entity: { class: Blog\UserBundle\Entity\User, property: username }
     encoders:
-         Blog\UserBundle\Entity\User:
-            algorithm: plaintext #sha512
-            iterations: 9616
+          Blog\UserBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
 
     firewalls:
       dev:
