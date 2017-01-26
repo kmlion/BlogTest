@@ -22,7 +22,8 @@ Feature: Authentification
     And I should see "Account created."
 
   Scenario: Log in with Foo
-    Given I am on "/login"
+    Given A user named "foo" with password "bar"
+    And I am on "/login"
     When I fill in the following:
       | username | foo |
       | password | bar |
@@ -31,7 +32,7 @@ Feature: Authentification
     And I should see "Logout"
 
   Scenario: Logout
-    Given I am on "/"
+    Given I am logged in as "foo"
     And I go to "/logout"
     Then I should be on "/"
 

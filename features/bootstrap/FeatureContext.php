@@ -20,4 +20,21 @@ class FeatureContext extends MinkContext implements Context
     public function __construct()
     {
     }
+    
+    /**
+     * @Given /^A user named "([^"]*)" with password "([^"]*)"$/
+     */
+    public function aUserNamedWithPassword($arg1, $arg2)
+    {
+        
+        throw new \Behat\Behat\Tester\Exception\PendingException();
+    }
+    
+    /**
+     * @Given /^I am logged in as "([^"]*)"$/
+     */
+    public function iAmLoggedInAs($arg1)
+    {
+        throw new \Behat\Behat\Tester\Exception\PendingException();
+    }
 }
